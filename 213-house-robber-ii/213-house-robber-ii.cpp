@@ -17,6 +17,9 @@ public:
     int rob(vector<int>& nums) {
         unordered_map<int,int>mp,mp1;
         int n=nums.size();
+        if(n==0){
+            return 0;
+        }
         if(n==1){
             return nums[0];
         }
