@@ -15,7 +15,7 @@ public:
             return dp[currentIndex][amount];
         }
         
-        int pick = 100001 ;
+        int pick =100001 ;
         if(coins[currentIndex] <= amount){
             pick = 1+ minNumberOfCoins(coins, currentIndex, amount - coins[currentIndex]);
         }
