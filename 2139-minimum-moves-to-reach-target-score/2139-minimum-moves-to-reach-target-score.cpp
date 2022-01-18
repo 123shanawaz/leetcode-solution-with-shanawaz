@@ -1,28 +1,16 @@
 class Solution {
 public:
     int minMoves(int target, int maxDoubles) {
-        int count=0;
-        while(target>1){
-             if(maxDoubles==0){
-                    count+=(target-1);
-                 break;
-                }
-            else if(target%2==0 ){
-                count++;
-                target/=2;
-                maxDoubles--;
+     int ans=0;
+        while(target!=1 && maxDoubles!=0){
+            if(target%2)
+                ans++, target--;
+               
+                 else  target/=2,ans++,maxDoubles--;
             
-              
-            }
-            else{
-                
-                 count++;
-                target-=1;
-            }
-        
+
         }
-        return count;
-    
-        
+        ans+=(target-1);
+        return ans;
     }
 };
