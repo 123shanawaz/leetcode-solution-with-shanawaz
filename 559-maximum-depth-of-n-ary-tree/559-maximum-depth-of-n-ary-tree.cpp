@@ -21,16 +21,13 @@ public:
 class Solution {
 public:
     int maxDepth(Node* root) {
-        if(root==NULL){
-            return 0;
-        }
+        if(root==NULL)return 0;
         int ans=0;
         for(int i=0;i<root->children.size();i++){
-            int temp=maxDepth(root->children[i]);
-            ans=max(ans,temp);
+            int tempans=maxDepth(root->children[i]);
+            ans=max(ans,tempans);
         }
         return ans+1;
-        
         
     }
 };
