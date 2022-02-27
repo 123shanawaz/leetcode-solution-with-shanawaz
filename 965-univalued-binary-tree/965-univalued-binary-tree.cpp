@@ -11,20 +11,29 @@
  */
 class Solution {
 public:
-    bool isSame(TreeNode* root,int val){
-    
-    if(root==NULL){
-            return true ;
-        }
-        if(root->val!=val){
-            return false;
-        }
-        bool left=isSame(root->left,val);
-        bool right=isSame(root->right,val);
-        return left&& right;
-    }
     bool isUnivalTree(TreeNode* root) {
-        return isSame(root,root->val);
+        if(root==NULL)return true;
+        if(root->left==NULL && root->right==NULL )return true;
+        queue<TreeNode*>q;
+        q.push(root);
+        while(!q.empty()){
+            int currsize=q.size();
+            while(currsize>0){
+                TreeNode *currentNode=q.front();
+                q.pop();
+                currsize--;
+                if(currentNode->val!=root->val){
+                    return false;
+                }
+                if (currentNode->left!=NULL){
+                    q.push(currentNode->left);
+                }
+                if(currentNode->right!=NULL){
+                    q.push(currentNode->right);
+                }
+            }
+        }
+        return true;
         
     }
 };
