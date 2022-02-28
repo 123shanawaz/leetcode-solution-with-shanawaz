@@ -21,12 +21,24 @@ public:
 class Solution {
 public:
     int maxDepth(Node* root) {
+         
         if(root==NULL)return 0;
-        int ans=0;
-        for(int i=0;i<root->children.size();i++){
-            int tempans=maxDepth(root->children[i]);
-            ans=max(ans,tempans);
+        queue<Node*>q;
+        q.push(root);
+        int level=0;
+        while(!q.empty()){
+            level+=1;
+            int n=q.size();
+            for(int i=0;i<n;i++){
+            Node* currNode=q.front();
+                q.pop();
+           vector<Node*>v=currNode->children;
+                for(auto i:v){
+                    q.push(i);
+                }
+            }
+            
         }
-        return ans+1;
+        return level;
     }
 };
