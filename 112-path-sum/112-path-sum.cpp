@@ -16,7 +16,10 @@ public:
         return false;
     }
     if(root->left==NULL && root->right==NULL){
-        return (currSum+root->val)==targetSum;
+        if ((currSum+root->val)==targetSum){
+            return true ;
+        }
+       return false;
     }
     return pathSum(root->left,currSum+root->val,targetSum)||pathSum(root->right,currSum+root->val,targetSum);
     }
