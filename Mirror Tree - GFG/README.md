@@ -1,5 +1,5 @@
 # Mirror Tree
-##  Easy 
+## Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given a Binary Tree, convert it into its mirror.<br>
 <img alt="MirrorTree1" class="aligncenter size-full wp-image-663 img-responsive" src="https://contribute.geeksforgeeks.org/wp-content/uploads/mirrortrees.jpg" style="height:338px; width:591px" title="MirrorTree1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
