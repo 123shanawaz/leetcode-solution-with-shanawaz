@@ -15,12 +15,14 @@ public:
         if(root==NULL){
             return ;
         }
-        swap(root->left);
-        swap(root->right);
+        
         TreeNode *temp;
             temp=root->left;
         root->left=root->right;
         root->right=temp;
+        swap(root->left);
+        swap(root->right);
+        return;
     }
     TreeNode* invertTree(TreeNode* root) {
          swap(root);
