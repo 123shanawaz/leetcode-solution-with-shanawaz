@@ -6,17 +6,18 @@ public:
             ans.push_back(currentpath);
             return;
         }
-//         if(vis[currnode]==true){
-//             return;
-//         }
+        if(vis[currnode]==true){
+            return;
+        }
         
-//         vis[currnode]=true;
+        vis[currnode]=true;
         for(auto it:graph[currnode]){
             currentpath.push_back(it);
             Dfs(graph,it,vis,currentpath,ans,n);
             currentpath.pop_back();
             
         }
+       vis[currnode]=false;
        return;
     }
     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
