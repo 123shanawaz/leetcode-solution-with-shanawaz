@@ -6,11 +6,11 @@ public:
             ans.push_back(currentpath);
             return;
         }
-        if(vis[currnode]==true){
-            return;
-        }
+//         if(vis[currnode]==true){
+//             return;
+//         }
         
-        vis[currnode]=true;
+//         vis[currnode]=true;
         for(auto it:graph[currnode]){
             currentpath.push_back(it);
             Dfs(graph,it,vis,currentpath,ans,n);
