@@ -1,28 +1,26 @@
 class Solution {
 public:
-    void floodFiller(vector<vector<int>>& image, int i, int j, int m,int n,int currcolor,int newColor){
-       
-        if(i<0||i>=m||j<0|j>=n||image[i][j]==newColor||image[i][j]!=currcolor){
-            return;
+    vector<vector<int>> floodFill(vector<vector<int>>&grid, int sr, int sc, int newColor) {
+        if(grid[sr][sc]==newColor) return grid;
+        int m = grid.size();
+        int n = grid[0].size();
+        int color = grid[sr][sc];
+        queue<pair<int,int>>q;
+        q.push({sr,sc});
+        while(!q.empty())
+        {
+            auto it=q.front();
+            q.pop();
+            int curr_row = it.first;
+            int curr_col = it.second;
+            if(curr_row<0 || curr_row>=m || curr_col<0 || curr_col>=n || grid[curr_row][curr_col]!=color)
+                continue;
+            grid[curr_row][curr_col] = newColor;
+            q.push({curr_row-1,curr_col});
+             q.push({curr_row,curr_col+1});
+             q.push({curr_row+1,curr_col});
+             q.push({curr_row,curr_col-1});
         }
-        image[i][j]=newColor;
-        floodFiller(image,i-1,j,m,n,currcolor,newColor);
-        floodFiller(image,i+1,j,m,n,currcolor,newColor);
-        floodFiller(image,i,j+1,m,n,currcolor,newColor);
-         floodFiller(image,i,j-1,m,n,currcolor,newColor);
-        return;
-            
+        return grid;
     }
-    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
-        
-         if(image[sr][sc]==newColor){
-            return image;
-        }
-        int m=image.size();
-        int n=image[0].size();
-        int currcolor=image[sr][sc];
-        floodFiller(image,sr,sc,m,n,currcolor,newColor);
-        return image;
-    }
-    
 };
