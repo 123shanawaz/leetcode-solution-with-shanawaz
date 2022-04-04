@@ -5,12 +5,12 @@ public:
         int low = 0;
         int high = num.size()-1;
         
-        while(low < high)
+        while(low <high)
         {
             int mid1 = (low+high)/2;
-            int mid2 = mid1+1;
-            if(num[mid1] < num[mid2])
-                low = mid2;
+            
+            if(num[mid1] < num[mid1+1])
+                low = mid1+1;
             else
                 high = mid1;
         }
