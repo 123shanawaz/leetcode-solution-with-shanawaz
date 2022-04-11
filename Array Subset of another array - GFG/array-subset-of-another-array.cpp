@@ -28,19 +28,15 @@ int main() {
 
 
 string isSubset(int a1[], int a2[], int n, int m) {
-    int count=0;
+unordered_map<int,int>mp;
+for(int i=0;i<n;i++){
+    mp[a1[i]]++;
+}
     for(int i=0;i<m;i++){
-        for(int j=0;j<n;j++){
-            if(a2[i]==a1[j]){
-                count++;
-            }
-        }
-    }
-        if(count==m){
-            return "Yes";
-        }
-        else{
+        if(mp.find(a2[i])==mp.end()){
             return "No";
         }
-    
+        
+    }
+    return "Yes";
 }
