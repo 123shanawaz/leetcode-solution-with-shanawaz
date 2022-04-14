@@ -1,5 +1,5 @@
 # Count pairs with given sum
-##  Easy 
+## Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given an array&nbsp;of <strong>N</strong> integers, and an integer&nbsp;<strong>K</strong>, find the number of pairs of elements&nbsp;in the array whose sum is equal to <strong>K</strong>.</span></p>
 
@@ -19,7 +19,7 @@ and arr[1] + arr[3] = 5 + 1 = 6.
 <span style="font-size:18px"><strong>Example 2:</strong></span></p>
 
 <pre><span style="font-size:18px"><strong>Input:
-</strong>N = 4, X = 2
+</strong>N = 4, K = 2
 arr[] = {1, 1, 1, 1}
 <strong>Output:</strong> 6
 <strong>Explanation:</strong>&nbsp;
