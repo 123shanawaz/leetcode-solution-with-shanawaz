@@ -1,5 +1,5 @@
 # Zero Sum Subarrays
-## Medium 
+##  Medium 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">You are given an array arr[] of size n. Find&nbsp;the total count of sub-arrays having their sum equal to 0.</span></p>
 
