@@ -10,29 +10,24 @@ class Solution{
   public:
     vector <int> countDistinct (int A[], int n, int k)
     {
-        vector<int> vec;
-       map<int, int>mp;
-       
-      // if(k>n) return vec;
-       
-       for(int i=0; i<k ; i++)
-        {
+        vector<int>ans;
+        unordered_map<int,int>mp;
+        for(int i=0;i<k;i++){
             mp[A[i]]++;
         }
-        vec.push_back(mp.size());
-        
-       for(int i=k; i<n ; i++)
-       {
-           if(mp[A[i-k]]==1) mp.erase(A[i-k]);
-           else
-            mp[A[i-k]]--;
-           mp[A[i]]++; 
-            
-           vec.push_back(mp.size());
-           
-       }
-        
-        return vec;
+        ans.push_back(mp.size());
+        int f=0; 
+        for(int j=k;j<n;j++){
+            mp[A[f]]--;
+            mp[A[j]]++;
+            if(mp[A[f]]==0){
+                mp.erase(A[f]);
+            }
+            f++;
+            ans.push_back(mp.size());
+        }
+       
+        return ans;
     }
 };
 
