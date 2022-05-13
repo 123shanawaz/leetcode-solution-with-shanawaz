@@ -12,23 +12,24 @@ class Solution{
     public:
     //Function to count subarrays with sum equal to 0.
     ll findSubarray(vector<ll> arr, int n ) {
-        long long ans=0;
-         long long sum=0;
-         unordered_map<int,int>mp;
-         mp[0]=1;
+        int sum=0;
+        int count=0;
+        unordered_map<int,int>mp;
+       
         for(int i=0;i<n;i++){
             sum+=arr[i];
-            
-               if(mp.find(sum)!=mp.end()){
-                   ans+=mp[sum]++;
-               }
-               else{
-                   mp[sum]++;
-               }
+            if(sum==0){
+                count++;
+            }
+            if(mp.find(sum)!=mp.end()){
+                count+=mp[sum]++;
+            }
+            else{
+                mp[sum]++;
+            }
         }
-        return ans;
+        return count;
     }
-    
 };
 
 // { Driver Code Starts.
