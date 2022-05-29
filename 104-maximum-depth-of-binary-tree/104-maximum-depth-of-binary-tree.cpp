@@ -12,26 +12,12 @@
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
-        if(root==NULL)return 0;
-        queue<TreeNode*>q;
-        q.push(root);
-        int level=0;
-        while(!q.empty()){
-            level+=1;
-            int n=q.size();
-            for(int i=0;i<n;i++){
-            TreeNode* currNode=q.front();
-                q.pop();
-                if(currNode->left!=NULL){
-                    q.push(currNode->left);
-                }
-                if(currNode->right!=NULL){
-                    q.push(currNode->right);
-                }
-            }
-            
+        if(root==NULL){
+            return 0;
         }
-        return level;
+        int leftheight=1+maxDepth(root->left);
+        int rightheight=1+maxDepth(root->right);
+        return max(leftheight,rightheight);
         
     }
 };
