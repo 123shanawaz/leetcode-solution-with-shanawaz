@@ -20,19 +20,20 @@ public:
 
 class Solution {
 public:
-    void minpostorder(Node* root,vector<int>&ans){
-        if(root==NULL)return ;
-        for(int i=0;i<root->children.size();i++){
-            minpostorder(root->children[i],ans);
-            
-        }
-            ans.push_back(root->val);
-        return;
-        
-    }
     vector<int> postorder(Node* root) {
         vector<int>ans;
-        minpostorder(root,ans);
+        Npostorder(root,ans);
         return ans;
+        
+    }
+    private:void Npostorder(Node* root,vector<int>&ans){
+        if(root==NULL){
+            return ;
+        }
+        for(auto child:root->children){
+            Npostorder(child,ans);
+        }
+        ans.push_back(root->val);
+        return;
     }
 };
