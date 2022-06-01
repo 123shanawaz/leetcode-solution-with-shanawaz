@@ -12,28 +12,16 @@
 class Solution {
 public:
     bool isUnivalTree(TreeNode* root) {
+        return isSame(root,root->val);
+        
+    }
+    private:bool isSame(TreeNode* root,int val){
         if(root==NULL)return true;
-        if(root->left==NULL && root->right==NULL )return true;
-        queue<TreeNode*>q;
-        q.push(root);
-        while(!q.empty()){
-            int currsize=q.size();
-            while(currsize>0){
-                TreeNode *currentNode=q.front();
-                q.pop();
-                currsize--;
-                if(currentNode->val!=root->val){
-                    return false;
-                }
-                if (currentNode->left!=NULL){
-                    q.push(currentNode->left);
-                }
-                if(currentNode->right!=NULL){
-                    q.push(currentNode->right);
-                }
-            }
-        }
-        return true;
+        if(root->val!=val)return false;
+        int lh=isSame(root->left,val);
+        int rh=isSame(root->right,val);
+        return lh && rh;
+        
         
     }
 };
