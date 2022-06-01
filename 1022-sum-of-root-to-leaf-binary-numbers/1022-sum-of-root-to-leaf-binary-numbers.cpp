@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    void totalleaf(TreeNode* root,string currentstring,int* ans){
+    void totalleaf(TreeNode* root,string currentstring,int *ans){
         if(root->left==NULL && root->right==NULL){
             currentstring+=to_string(root->val);
             ans[0]+=stoi(currentstring,0,2);
