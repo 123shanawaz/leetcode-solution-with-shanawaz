@@ -11,21 +11,23 @@
  */
 class Solution {
 public:
-    void pathfinder(TreeNode* root,vector<string>&ans,string currpath){
-        if(root->left==NULL && root->right==NULL){
-            currpath+=to_string(root->val);
-            ans.push_back(currpath);
-            return ;
-        }
-        currpath+=to_string(root->val)+"->";
-        if(root->left) pathfinder(root->left,ans,currpath);
-         if(root->right) pathfinder(root->right,ans,currpath);
-    }
     vector<string> binaryTreePaths(TreeNode* root) {
         vector<string>ans;
         pathfinder(root,ans,"");
         return ans;
         
-        
+    }
+    private:void pathfinder(TreeNode* root,vector<string>&ans,string currpath){
+        if(root==NULL)return;
+        if(root->left==NULL && root->right==NULL){
+            currpath+=to_string(root->val);
+            ans.push_back(currpath);
+            return;
+        }
+        currpath+=to_string(root->val)+"->";
+        if(root->left) pathfinder(root->left,ans,currpath);
+         if(root->right) pathfinder(root->right,ans,currpath);
+       
+        return;
     }
 };
