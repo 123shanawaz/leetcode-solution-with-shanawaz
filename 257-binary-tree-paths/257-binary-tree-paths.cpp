@@ -13,21 +13,20 @@ class Solution {
 public:
     vector<string> binaryTreePaths(TreeNode* root) {
         vector<string>ans;
-        pathfinder(root,ans,"");
+        Btpath(root,"",ans);
         return ans;
         
     }
-    private:void pathfinder(TreeNode* root,vector<string>&ans,string currpath){
+    private:void Btpath(TreeNode* root,string currpath,vector<string>&ans){
         if(root==NULL)return;
-        if(root->left==NULL && root->right==NULL){
-            currpath+=to_string(root->val);
-            ans.push_back(currpath);
-            return;
-        }
-        currpath+=to_string(root->val)+"->";
-        if(root->left) pathfinder(root->left,ans,currpath);
-         if(root->right) pathfinder(root->right,ans,currpath);
-       
+    if(root->left==NULL && root->right==NULL){
+        currpath+=to_string(root->val);
+        ans.push_back(currpath);
         return;
     }
+    currpath+=to_string(root->val)+"->";
+        if(root->left)Btpath(root->left,currpath,ans);
+        if(root->right)Btpath(root->right,currpath,ans);
+        return;
+        }
 };
