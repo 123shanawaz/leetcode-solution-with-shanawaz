@@ -11,19 +11,19 @@
  */
 class Solution {
 public:
-    int leftleav(TreeNode* root,bool leaf){
+    int sumOfLeftLeaves(TreeNode* root) {
+        return leftleavesum(root,false);
+        
+    }
+    private:int leftleavesum(TreeNode* root,bool leaf){
         if(root==NULL){
             return 0;
         }
-        if(root->left==NULL && root->right==NULL && leaf){
+        if(root->left ==NULL && root->right==NULL && leaf==true){
             return root->val;
         }
-        int ls=leftleav(root->left,true);
-        int rs=leftleav(root->right,false);
+        int ls=leftleavesum(root->left,true);
+        int rs=leftleavesum(root->right,false);
         return ls+rs;
-    }
-    int sumOfLeftLeaves(TreeNode* root) {
-        return leftleav(root,false);
-        
     }
 };
