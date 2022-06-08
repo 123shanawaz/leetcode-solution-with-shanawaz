@@ -17,16 +17,19 @@ public:
         return ans;
         
     }
-    private:void Btpath(TreeNode* root,string currpath,vector<string>&ans){
-        if(root==NULL)return;
-    if(root->left==NULL && root->right==NULL){
-        currpath+=to_string(root->val);
-        ans.push_back(currpath);
+    private: void Btpath(TreeNode* root,string currpath,vector<string>&ans){
+        if(root==NULL){
+            return ;
+        }
+        if(root->left==NULL && root->right==NULL){
+            currpath+=to_string(root->val);
+            ans.push_back(currpath);
+            return;
+        }
+        currpath+=to_string(root->val)+"->";
+        Btpath(root->left,currpath,ans);
+        Btpath(root->right,currpath,ans);
+        
         return;
     }
-    currpath+=to_string(root->val)+"->";
-        if(root->left)Btpath(root->left,currpath,ans);
-        if(root->right)Btpath(root->right,currpath,ans);
-        return;
-        }
 };
