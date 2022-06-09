@@ -18,6 +18,8 @@ public:
         if(p==NULL || q==NULL || p->val!=q->val){
             return false;
         }
-        return isSameTree(p->left,q->left)&& isSameTree(p->right,q->right);
+        bool a= isSameTree(p->left,q->left);
+        bool b=isSameTree(p->right,q->right);
+        return a&&b;
     }
 };
