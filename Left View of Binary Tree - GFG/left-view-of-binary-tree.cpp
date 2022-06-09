@@ -127,22 +127,26 @@ struct Node
  */
 
 //Function to return a list containing elements of left view of the binary tree.
-void lview(Node *root,set<int>&s,vector<int>&ans,int currlavel){
-    if(root==NULL){
-        return ;
-    }
-    if(s.find(currlavel)==s.end()){
-        s.insert(currlavel);
-        ans.push_back(root->data);
-    }
-    lview(root->left,s,ans,currlavel+1);
-    lview(root->right,s,ans,currlavel+1);
-    return ;
+void leftviews(Node *root,vector<int>&ans,set<int>&s,int curr){
+   if(root==NULL) {
+       return;
+   }
+   if(s.find(curr)==s.end()){
+       s.insert(curr);
+       ans.push_back(root->data);
+   }
+   leftviews(root->left,ans,s,curr+1);
+   leftviews(root->right,ans,s,curr+1);
+   
+   return ;
+   
 }
+
+
 vector<int> leftView(Node *root)
 {
-  vector<int>ans;
-  set<int>s;
-  lview(root,s,ans,0);
-  return ans;
+    set<int>s;
+   vector<int>ans;
+   leftviews(root,ans,s,1);
+   return ans;
 }
