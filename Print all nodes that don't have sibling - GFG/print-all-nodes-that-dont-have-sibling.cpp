@@ -111,30 +111,33 @@ int main()
      int data;
      Node* left, *right;
 }; */
-void findNode(Node* node,vector<int>&res){
+
+void findnosibling(Node* node,vector<int>&ans){
     if(node==NULL)return;
-    if(node->left==NULL && node->right==NULL)return ;
+    if(node->left==NULL && node->right==NULL)return;
     if(node->left!=NULL && node->right!=NULL){
-        findNode(node->left,res);
-        findNode(node->right,res);
+        findnosibling(node->left,ans);
+        findnosibling(node->right,ans);
     }
-        else if(node->left!=NULL){
-        res.push_back(node->left->data);
-        findNode(node->left,res);
-        }
-        else if(node->right!=NULL){
-            res.push_back(node->right->data);
-            findNode(node->right,res);
-        }
-        return;
+    else if(node->left!=NULL){
+        ans.push_back(node->left->data);
+        findnosibling(node->left,ans);
         
-    
+    }
+    else if(node->right!=NULL){
+        ans.push_back(node->right->data);
+        findnosibling(node->right,ans);
+    }
+    return ;
 }
 vector<int> noSibling(Node* node)
 {
-vector<int>res;
-findNode(node,res);
-if(res.size()==0) res.push_back(-1);
-sort(res.begin(),res.end());
-return res;
+    // code here
+    vector<int>ans;
+    findnosibling(node,ans);
+    if(ans.size()==0){
+        ans.push_back(-1);
+    }
+    sort(ans.begin(),ans.end());
+    return ans;
 }
