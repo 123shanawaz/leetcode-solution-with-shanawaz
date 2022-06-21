@@ -1,5 +1,5 @@
 # Print all nodes that don't have sibling
-## Easy 
+##  Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given a Binary Tree of size N, find all the nodes which don't have any sibling. You need to return&nbsp;a list of integers containing all the nodes that don't have a sibling in sorted order.</span></p>
 
