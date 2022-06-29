@@ -9,50 +9,41 @@
  */
 class Solution {
 public:
-   
-    vector<int> distanceK(TreeNode* root, TreeNode* target, int K) {
-        unordered_map<TreeNode*, TreeNode*> parent_track; // node -> parent
-        unordered_map<TreeNode*, bool> visited;
-        queue<TreeNode*> queue;
-        queue.push(root);
-        while(!queue.empty()) { /*First BFS to get a track of parent nodes*/
-            TreeNode* current = queue.front(); queue.pop();
-            if(current->left) {
-                parent_track[current->left] = current;
-                queue.push(current->left);
-            }
-            if(current->right) {
-                parent_track[current->right] = current;
-                queue.push(current->right);
-            }
+    void populatedmap(TreeNode* currroot,TreeNode* currparent,unordered_map<TreeNode*,TreeNode*>&mp){
+        if(currroot==NULL){
+            return;
         }
-        queue.push(target);
-        visited[target] = true;
-        int curr_level = 0;
-        while(!queue.empty()) { /*Second BFS to go upto K level from target node and using our hashtable info*/
-            int size = queue.size();
-            if(curr_level++ == K) break;
-            for(int i=0; i<size; i++) {
-                TreeNode* current = queue.front(); queue.pop();
-                if(current->left && !visited[current->left]) {
-                    queue.push(current->left);
-                    visited[current->left] = true;
-                }
-                if(current->right && !visited[current->right]) {
-                    queue.push(current->right);
-                    visited[current->right] = true;
-                }
-                if(parent_track[current] && !visited[parent_track[current]]) {
-                    queue.push(parent_track[current]);
-                    visited[parent_track[current]] = true;
-                }
-            }
+        mp[currroot]=currparent;
+        populatedmap(currroot->left,currroot,mp);
+         populatedmap(currroot->right,currroot,mp);
+        return;
+        
+        
+    }
+    void printnode(TreeNode* currnode,int k, set<TreeNode*>&s, unordered_map<TreeNode*,TreeNode*>&mp, vector<int>&ans){
+        if(currnode==NULL || s.find(currnode)!=s.end()||k<0){
+            return;
         }
-        vector<int> result;
-        while(!queue.empty()) {
-            TreeNode* current = queue.front(); queue.pop();
-            result.push_back(current->val);
+        s.insert(currnode);
+        if(k==0){
+            ans.push_back(currnode->val);
+            return;
         }
-        return result;
+        printnode( currnode->left,k-1,s,mp,ans);
+        printnode( currnode->right,k-1,s,mp,ans);
+        printnode( mp[currnode],k-1,s,mp,ans);
+        return;
+        
+        
+    }
+    vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
+        vector<int>ans;
+        set<TreeNode*>s;
+        unordered_map<TreeNode*,TreeNode*>mp;
+        populatedmap(root,NULL,mp);
+        printnode(target,k,s,mp,ans);
+        
+        return ans;
+        
     }
 };
