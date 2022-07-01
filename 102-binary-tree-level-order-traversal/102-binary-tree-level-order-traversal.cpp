@@ -11,33 +11,18 @@
  */
 class Solution {
 public:
+    vector<vector<int>> answer;
+    void DFS_levelorder(TreeNode* root,int level) 
+    {
+        if(!root) return;  //if root is NULL then return
+        if(level==answer.size())  //if level is equal to answer size then we have to push one empty element into it
+            answer.push_back(vector<int> ());  //pushing extra element to accomodate next level nodes
+        answer[level].push_back(root->val);  //pushing current node to the level index of answer
+        DFS_levelorder(root->left,level+1);  //recursive call to traverse left subtree by increasing the level order
+        DFS_levelorder(root->right,level+1);  //recursive call to traverse right subtree by increasing the level order
+    }
     vector<vector<int>> levelOrder(TreeNode* root) {
-        vector<vector<int>>ans;
-        if(root==NULL){
-            return ans;
-        }
-        queue<TreeNode*>q;
-        q.push(root);
-        while(!q.empty()){
-          int currsize=q.size();
-            vector<int>level;
-            while(currsize>0){
-                TreeNode* node=q.front();
-                q.pop();
-                level.push_back(node->val);
-                currsize--;
-                
-            if(node->left!=NULL){
-                q.push(node->left);
-            }
-            if(node->right!=NULL){
-                q.push(node->right);
-            }
-              
-            }
-              ans.push_back(level);
-        }
-        return ans;
-        
+        DFS_levelorder(root,0);  //calling function to traverse whole tree by passing root and level order
+        return answer;  
     }
 };
