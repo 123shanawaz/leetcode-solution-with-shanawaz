@@ -13,17 +13,19 @@ class Solution {
 public:
     int rangeSumBST(TreeNode* root, int low, int high) {
         int sum=0;
-        Sum(root,low,high,sum);
+        rangesum(root,low,high,sum);
         return sum;
         
     }
-    private:void Sum(TreeNode* root, int low, int high,int &sum){
-        if(root==NULL)return;
+    private: void rangesum(TreeNode* root, int low, int high,int &sum){
+        if(root==NULL){
+            return;
+        }
         if(root->val>=low && root->val<=high){
             sum+=root->val;
         }
-        Sum(root->left,low,high,sum);
-        Sum(root->right,low,high,sum);
-            return;
+        rangesum(root->left,low,high,sum);
+        rangesum(root->right,low,high,sum);
+        return;
     }
 };
