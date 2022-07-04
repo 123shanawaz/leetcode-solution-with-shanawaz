@@ -11,22 +11,30 @@
  */
 class Solution {
 public:
-    bool  symmetric(TreeNode* l,TreeNode* r){
-        if(l==NULL && r==NULL){
-            return true;
-        }
-        if(l==NULL || r==NULL || l->val!=r->val){
-            return false;
-        }
-        bool a= symmetric(l->left,r->right);
-        bool b=  symmetric(l->right,r->left);
-        return a&&b;
-    }
     bool isSymmetric(TreeNode* root) {
-        if(root==NULL){
-            return true;
-        }
-        return symmetric(root->left,root->right);
+        if (!root) return true;
+        queue<TreeNode*> check;
         
-    }
+        check.push(root->left);
+        check.push(root->right);
+        
+        while (!check.empty()) {
+            TreeNode* node1 = check.front();
+            check.pop();
+            TreeNode* node2 = check.front();
+            check.pop();
+            if (!node1 && node2) return false;
+            if (!node2 && node1) return false;
+            if (node1 && node2) {
+                if (node1->val != node2->val) return false;
+                check.push(node1->left);
+                check.push(node2->right);
+                check.push(node1->right);
+                check.push(node2->left);
+            }
+        }
+        
+        return true;
+            
+        }
 };
