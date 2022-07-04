@@ -11,22 +11,30 @@
  */
 class Solution {
 public:
-    void inorder(TreeNode* root,vector<int>&ans){
-        if(root==NULL)return ;
+    void inorder(TreeNode* root, vector<int>&ans){
+        if(root==NULL){
+            return ;
+        }
         inorder(root->left,ans);
         ans.push_back(root->val);
         inorder(root->right,ans);
     }
     bool findTarget(TreeNode* root, int k) {
-       vector<int>ans;
+        vector<int>ans;
         inorder(root,ans);
-        int f=0;
-        int r=ans.size()-1;
-        while(f<r){
-            if(ans[f]+ans[r]==k)return true;
-            if(ans[f]+ans[r]>k) r--;
-            else f++;
+        int left=0;
+        int right=ans.size()-1;
+        while(left<right){
+            if(ans[left]+ans[right]==k){
+                return true;
+            }
+            else if(ans[left]+ans[right]>k){
+                right--;
+            }else{
+                left++;
+            }
         }
         return false;
+        
     }
 };
