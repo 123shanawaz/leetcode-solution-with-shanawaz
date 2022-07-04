@@ -12,16 +12,16 @@
 class Solution {
 public:
     int minDepth(TreeNode* root) {
-        if(root==NULL)
+        if(root==NULL){
             return 0;
+        }
         
-        // "minDepth" for skewed tree will be "N" not 0.
-        if(root->left==NULL)
-            return minDepth(root->right)+1;
-        if(root->right==NULL)
-            return minDepth(root->left)+1;
         
-        return min(minDepth(root->left),minDepth(root->right)) + 1;
-        
+        int left=minDepth(root->left);
+        int right=minDepth(root->right);
+        if(left==0 || right==0){
+            return 1+max(left,right);
+        }
+        return min(left,right)+1;
     }
 };
