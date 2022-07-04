@@ -11,24 +11,22 @@
  */
 class Solution {
 public:
-    bool isSymmetric(TreeNode* root) {
-        if(root==NULL)return true;
-       return  symmetric(root->left,root->right);
-        
-    }
-    private: bool symmetric(TreeNode* l,TreeNode* r){
+    bool  symmetric(TreeNode* l,TreeNode* r){
         if(l==NULL && r==NULL){
             return true;
         }
-        else if(l==NULL || r==NULL){
+        if(l==NULL || r==NULL || l->val!=r->val){
             return false;
         }
-        else if(l->val!=r->val){
-            return false;
-        }
-        
         bool a= symmetric(l->left,r->right);
-        bool b= symmetric(l->right,r->left);
-        return a && b;
+        bool b=  symmetric(l->right,r->left);
+        return a&&b;
+    }
+    bool isSymmetric(TreeNode* root) {
+        if(root==NULL){
+            return true;
+        }
+        return symmetric(root->left,root->right);
+        
     }
 };
