@@ -11,15 +11,17 @@
  */
 class Solution {
 public:
-    void inorder(TreeNode* root,vector<int>&ans){
-        if(root==NULL)return;
-        inorder(root->left,ans);
+    void preorder(TreeNode* root,vector<int>&ans){
+        if(root==NULL){
+            return ;
+        }
+        preorder(root->left,ans);
         ans.push_back(root->val);
-        inorder(root->right,ans);
+        preorder(root->right,ans);
     }
     TreeNode* increasingBST(TreeNode* root) {
         vector<int>ans;
-        inorder(root,ans);
+        preorder(root,ans);
         TreeNode* dummy=new TreeNode(-1);
         TreeNode* newNode=dummy;
         for(auto it:ans){
@@ -27,5 +29,7 @@ public:
             dummy=dummy->right;
         }
         return newNode->right;
+        
+        
     }
 };
