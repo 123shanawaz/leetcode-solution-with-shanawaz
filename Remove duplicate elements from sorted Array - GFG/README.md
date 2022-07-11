@@ -1,5 +1,5 @@
 # Remove duplicate elements from sorted Array
-## Easy 
+##  Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given a sorted array<strong> A[]</strong> of size <strong>N</strong>, delete all the duplicates elements from A[].</span><br>
 <span style="font-size:18px"><strong>Note: </strong>Don't use set or HashMap to solve the problem.</span></p>
@@ -10,7 +10,7 @@
 <pre><span style="font-size:18px"><strong>Input:</strong>
 N = 5
 Array = {2, 2, 2, 2, 2}
-<strong>Output:</strong> 2
+<strong>Output:</strong> 1
 <strong>Explanation:</strong> After removing all the duplicates 
 only one instance of 2 will remain.</span>
 </pre>
@@ -20,7 +20,7 @@ only one instance of 2 will remain.</span>
 <pre><span style="font-size:18px"><strong>Input:</strong>
 N = 3
 Array = {1, 2, 2}
-<strong>Output:</strong> 1 2 </span></pre>
+<strong>Output:</strong> 2</span></pre>
 
 <p><br>
 <span style="font-size:18px"><strong>Your Task: &nbsp;</strong><br>
