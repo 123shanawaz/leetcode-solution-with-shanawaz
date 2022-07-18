@@ -7,8 +7,8 @@ public:
             map[nums1[i]]++;
         }
         for(int i=0; i<nums2.size(); i++){
-            if(map.find(nums2[i])!=map.end()){
-                if(map[nums2[i]]!=0)
+           
+                if(map[nums2[i]]!=0){
                     result.push_back(nums2[i]);
                     map[nums2[i]]=0;
             }
