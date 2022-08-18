@@ -12,15 +12,24 @@
 class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
-        if(p==NULL && q==NULL){
-            return true;
+        queue<TreeNode*>store;
+        store.push(p);
+        store.push(q);
+        while(!store.empty()){
+            TreeNode* LT=store.front();
+            store.pop();
+            TreeNode* RT=store.front();
+            store.pop();
+            if(RT!=NULL && LT==NULL)return false;
+            if(RT==NULL && LT!=NULL)return false;
+            if(LT!=NULL && RT!=NULL){
+             if( RT->val!=LT->val )return false;
+            store.push(RT->left);
+            store.push(LT->left);
+            store.push(RT->right);
+            store.push(LT->right);
         }
-        if(p==NULL || q==NULL || p->val!=q->val){
-            return false;
         }
-        bool a=isSameTree(p->left,q->left);
-        bool b=isSameTree(p->right,q->right);
-        return a&& b;
-        
+     return true;   
     }
 };
