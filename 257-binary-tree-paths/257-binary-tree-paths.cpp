@@ -13,25 +13,25 @@ class Solution {
 public:
     vector<string> binaryTreePaths(TreeNode* root) {
         vector<string>ans;
-        pathtree(root,"",ans);
+        Treepath(root,ans,"");
         return ans;
         
     }
-    private:void pathtree(TreeNode* root,string currpath, vector<string>&ans){
+    private:void Treepath(TreeNode* root, vector<string>&ans,string path){
         if(root==NULL){
             return ;
         }
         if(root->left==NULL && root->right==NULL){
-            currpath+=to_string(root->val);
-            ans.push_back(currpath);
+            path+=to_string(root->val);
+            ans.push_back(path);
         }
-        currpath+=to_string(root->val)+"->";
-        pathtree(root->left,currpath,ans);
-        pathtree(root->right,currpath,ans);
-        
-
-          return;      
-
-        
+        path+=to_string(root->val)+"->";
+        if(root->left){
+            Treepath(root->left,ans,path);
+}
+        if(root->right){
+            Treepath(root->right,ans,path);
+        }
+        return ;
     }
 };
