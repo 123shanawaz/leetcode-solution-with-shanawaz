@@ -11,18 +11,19 @@
  */
 class Solution {
 public:
-	int ans = 0;
-	int findTilt(TreeNode* root) {
-		sum(root);
-		return ans;
-	}
-
-	int sum(TreeNode* root)
-	{
-		if (!root) return 0;
-		int l = sum(root->left);
-		int r = sum(root->right);
-		ans += abs(l - r);
-		return (l + r + root->val);
-	}
+    int findTilt(TreeNode* root) {
+        int ans=0;
+        solve(root,ans);
+        return ans;
+        
+    }
+    private:int solve(TreeNode* root,int &ans){
+        if(root==NULL){
+            return 0;
+        }
+        int l=solve(root->left,ans);
+        int r=solve(root->right,ans);
+        ans+=abs(l-r);
+        return (r+l+root->val);
+    }
 };
