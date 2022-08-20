@@ -11,24 +11,25 @@
  */
 class Solution {
 public:
-    int total=0;
-    int pathSum(TreeNode* root, int targetSum) {
-        if(root==NULL){
-            return 0;
-        }
-        dfs(root,targetSum,0);
-        pathSum(root->left,targetSum);
-        pathSum(root->right,targetSum);
-        return total;
+  
+    void countPathSum(TreeNode* root, int target, long sum,unordered_map<long long int,long long int>&mp,long long int &count){
+        if(!root)
+            return;
+        sum += root->val;        //Path sum from root
+        if(sum == target)
+            count++;
+        if(mp.find(sum - target) != mp.end())     
+            count += mp[sum - target];
+        mp[sum]++;
+        countPathSum(root->left, target, sum,mp,count);
+        countPathSum(root->right, target, sum,mp,count);
+        mp[sum]--;      //After visiting the left and right subtree, we have to reduce this path sum count from map since we are leaving this path
     }
-    private:void dfs(TreeNode* root, long long targetSum,long long currsum){
-        if(root==NULL)return;
-        currsum+=root->val;
-        if(currsum==targetSum){
-            total++;
-        }
-        dfs(root->left,targetSum,currsum);
-         dfs(root->right,targetSum,currsum);
-        return ;
+    
+    int pathSum(TreeNode* root, int targetSum) {
+        unordered_map<long long int,long long int>mp;
+        long long int count=0;
+        countPathSum(root, targetSum, 0,mp,count);
+        return count;
     }
 };
