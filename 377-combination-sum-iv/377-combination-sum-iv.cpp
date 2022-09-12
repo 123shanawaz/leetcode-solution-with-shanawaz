@@ -2,8 +2,11 @@ class Solution {
 public:
     int mp[10001];
     int totalWays(vector<int>&nums, int currentIndex,int target){
+        if(target==0){
+            return 1;
+        }
         if(currentIndex >= nums.size()|| target<=0){
-            return (target==0) ? 1:0;
+          return 0;
         }
       
         if(mp[target]!=-1){
