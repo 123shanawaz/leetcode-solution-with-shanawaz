@@ -1,7 +1,7 @@
 class Solution {
 public:
-    int dp[10001];
-    bool jump(vector<int>& nums,int currentidx){
+    // int dp[10001];
+    bool jump(vector<int>& nums,int currentidx, vector<int>&dp){
         if(currentidx>=nums.size()-1){
             return true;
         }
@@ -11,7 +11,7 @@ public:
        int currentjump=nums[currentidx];
         bool ans=false;
         for(int i=1;i<=currentjump;i++){
-            bool ans2=jump(nums,currentidx+i);
+            bool ans2=jump(nums,currentidx+i,dp);
             ans= ans||ans2;
             if(ans){
                 
@@ -22,8 +22,9 @@ public:
         
     }
     bool canJump(vector<int>& nums) {
-        memset(dp,-1,sizeof(dp));
-        return jump(nums,0);
+        // memset(dp,-1,sizeof(dp));
+        vector<int>dp(nums.size()+1,-1);
+        return jump(nums,0,dp);
         
     }
 };
