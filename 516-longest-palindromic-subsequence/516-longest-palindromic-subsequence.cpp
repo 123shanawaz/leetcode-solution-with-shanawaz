@@ -22,7 +22,9 @@ public:
             return dp[i][j]= 1+solve(text1,text2,i-1,j-1,dp);
         }
         else{
-            return dp[i][j]= 0+max(solve(text1,text2,i-1,j,dp),solve(text1,text2,i,j-1,dp));
+             int a=solve(text1,text2,i-1,j,dp);
+                 int b=solve(text1,text2,i,j-1,dp);
+            return dp[i][j]=max(a,b);
         }
        
     }
