@@ -11,23 +11,26 @@
  */
 class Solution {
 public:
-    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
-        vector<int>temp;
-          vector<vector<int>>ans;
-        solve( root, targetSum,temp,ans);
-        return ans;
+    vector<vector<int>> pathSum(TreeNode* root, int sum) {
+        vector<int> curr;
+        vector<vector<int>> result;
         
+        dfs_preorder(root, curr, result, 0, sum);
+        
+        return result;
     }
-    private:void solve(TreeNode* root, int targetSum, vector<int>temp,  vector<vector<int>>&ans){
-        if(root==NULL){
-            return;
-        }
-        temp.push_back(root->val);
-        if(root->left==NULL && root->right==NULL && root->val==targetSum){
-            ans.push_back(temp);
-        }
-        solve(root->left,targetSum-root->val,temp,ans);
-         solve(root->right,targetSum-root->val,temp,ans);
     
+    void dfs_preorder(TreeNode* root, vector<int> curr, vector<vector<int>>& result, int total, int sum){
+        if(!root) return;
+        
+        total += root->val;
+        curr.push_back(root->val);
+        
+        if(!root->left && !root->right && total == sum){
+            result.push_back(curr);
+        }
+        
+        dfs_preorder(root->left, curr, result, total, sum);
+        dfs_preorder(root->right, curr, result, total, sum);
     }
 };
