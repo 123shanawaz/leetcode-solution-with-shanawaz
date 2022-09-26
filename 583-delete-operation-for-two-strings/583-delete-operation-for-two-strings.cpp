@@ -1,26 +1,34 @@
 class Solution {
 public:
     int minDistance(string word1, string word2) {
+        int n=word1.size();
+        int m=word2.size();
+        unordered_map<string,int>mp;
+        return solve(word1,word2,n,m,0,0,mp);
         
-        int m = word1.size();
-        int n = word2.size();
         
-        vector<vector<int>>dp(m+1,vector<int>(n+1,0));
-        
-        int res = 0;
-        
-        for(int i=1;i<m+1;i++){
-            for(int j=1;j<n+1;j++){
-                if(word1[i-1] == word2[j-1]){
-                    dp[i][j] = 1 + dp[i-1][j-1];
-                }else{
-                    dp[i][j] = max(dp[i-1][j],dp[i][j-1]);
-                }
-            }
+    }
+    private:int solve(string s1,string s2,int n,int m,int i,int j ,unordered_map<string,int>&mp){
+        if(i>=n){
+            return m-j;
         }
-        
-        res += m-dp[m][n];
-        res += n-dp[m][n];
-        return res;
+        if(j>=m){
+            return n-i;
+            
+        }
+        string currkey=to_string(i)+"_"+to_string(j);
+        if(mp.find(currkey)!=mp.end()){
+            return mp[currkey];
+        }
+        int ans=1000;
+        if(s1[i]==s2[j]){
+           mp[currkey]= ans=solve(s1,s2,n,m,i+1,j+1,mp);
+        }
+        else{
+            int a=1+solve(s1,s2,n,m,i,j+1,mp);
+            int b=1+solve(s1,s2,n,m,i+1,j,mp);
+            mp[currkey]=min(ans,min(a,b));
+        }
+        return mp[currkey];
     }
 };
