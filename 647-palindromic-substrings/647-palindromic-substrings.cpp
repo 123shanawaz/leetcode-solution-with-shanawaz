@@ -2,23 +2,36 @@ class Solution {
 public:
     int countSubstrings(string s) {
         int n=s.size();
-        int ans=0;
-        
-        for(int i=0;i<n;i++){
-            int x=i-1,y=i+1;
-            ans++;
-            while(x>=0 and y<n and s[x]==s[y]){
-                ans++;
-                x--;
-                y++;
-            }
-             x=i,y=i+1;
-            while(x>=0 and y<n and s[y]== s[x]){
-                ans++;
-                x--;
-                y++;
+        vector<vector<int>>dp(n,vector<int>(n,false));
+        int count=0;
+        for(int diff=0;diff<n;diff++){
+            for(int i=0,j=diff;j<n;i++,j++){
+                if(diff==0){
+                    dp[i][j]=true;
+                }
+                 else if(diff==1){
+                     if(s[i]==s[j]){
+                         dp[i][j]=true;
+                     }
+                     else {
+                         dp[i][j]=false;
+                     }
+                 }
+                else{
+                    if(s[i]==s[j]){
+                        dp[i][j]=dp[i+1][j-1];
+                    }
+                    else{
+                        dp[i][j]=false;
+                    }
+                }
+                   if(dp[i][j]==true){
+            count++;
             }
         }
-        return ans;
+     
+        }
+        return count;
+        
     }
 };
