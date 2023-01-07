@@ -1,7 +1,6 @@
 # Kadane's Algorithm
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given an array <strong>Arr[]&nbsp;</strong>of <strong>N</strong> integers. Find the contiguous sub-array(containing at least one number) which has the&nbsp;maximum sum and return its sum.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array <strong>Arr[]&nbsp;</strong>of <strong>N</strong> integers. Find the contiguous sub-array(containing at least one number) which has the&nbsp;maximum sum and return its sum.</span></p>
 
 <p><br>
 <span style="font-size:18px"><strong>Example 1:</strong></span></p>
@@ -40,5 +39,4 @@ You don't need to read input or print anything.&nbsp;The task is to complete the
 <span style="font-size:18px"><strong>Constraints:</strong><br>
 1 ≤ N ≤ 10<sup>6</sup><br>
 -10<sup>7</sup> ≤ A[i] ≤ 10<sup>7</sup></span></p>
- <p></p>
-            </div>
+</div>
