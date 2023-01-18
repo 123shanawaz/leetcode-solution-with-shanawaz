@@ -1,7 +1,6 @@
 # Spirally traversing a matrix
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a&nbsp;matrix&nbsp;of size r*c. Traverse the matrix in spiral form.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a&nbsp;matrix&nbsp;of size r*c. Traverse the matrix in spiral form.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -14,7 +13,7 @@ matrix[][] = {{1, 2, 3, 4},
 <strong>Output</strong>: 
 1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10
 <strong>Explanation</strong>:
-</span><img alt="" src="https://www.geeksforgeeks.org/wp-content/uploads/spiral-matrix.png" style="height:242px; width:400px" class="img-responsive"></pre>
+</span><img alt="" src="https://www.geeksforgeeks.org/wp-content/uploads/spiral-matrix.png" style="height:242px; width:400px"></pre>
 
 <p><span style="font-size:18px"><strong>Example 2:</strong></span></p>
 
@@ -41,5 +40,4 @@ output for the 2nd testcase will be
 <strong>Constraints:</strong><br>
 1 &lt;= r, c &lt;= 100<br>
 0 &lt;= matrix<sub>i</sub> &lt;= 100</span></p>
- <p></p>
-            </div>
+</div>
